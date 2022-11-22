@@ -11,7 +11,14 @@ function App() {
       x = x + 300;
     }
     let y = Math.floor(Math.random() * 100) + 1;
-    setNum(x + "280" + y);
+    if (y < 10) {
+      y = "0" + y;
+    }
+    let result = x + "280" + y;
+    if (result == "9828076") {
+      result = "9828018";
+    }
+    setNum(result);
   }
 
   function calc() {
@@ -19,48 +26,47 @@ function App() {
     createNum();
     const myTime = setTimeout(endLoad, 2000);
   }
+
   function endLoad() {
     setState(2);
   }
   return (
     <div className="App">
       <div className="container">
+        {" "}
         {state === 0 && (
           <div className="default">
             <p>
               If you want to have a Nassaj crush and you can not choose, we will
-              help you.
+              help you. <br />
               <br />
-              <br />
-              if number does not exist, you will be "SINGLE BE GOOR"
-            </p>
-            <button onClick={calc}>click me</button>
+              if number does not exist, you will be "SINGLE BE GOOR"{" "}
+            </p>{" "}
+            <button onClick={calc}> click me </button>{" "}
           </div>
-        )}
+        )}{" "}
         {state === 2 && (
           <div className="default">
             <p>
-              Your crush's number is:
+              Your crush 's number is: <br />
               <br />
-              <br />
-              <span className="resNum">{num}</span>
-            </p>
+              <span className="resNum"> {num} </span>{" "}
+            </p>{" "}
             <button
               onClick={() => {
                 setState(0);
               }}
             >
-              AGAIN
-            </button>
+              AGAIN{" "}
+            </button>{" "}
           </div>
-        )}
+        )}{" "}
         {state === 1 && (
           <div class="ring">
-            LOADING
-            <span className="span"></span>
+            LOADING <span className="span"> </span>{" "}
           </div>
-        )}
-      </div>
+        )}{" "}
+      </div>{" "}
     </div>
   );
 }
